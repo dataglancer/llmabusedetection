@@ -1,9 +1,10 @@
 # Project File Descriptions
+---
+
 
 These files were used for a reported named "LLM Abuse Detection via
 GPU Power Telemetry" where the goal was to determine if power telemetry could be used as a suitable indicator for abuse detection. 
 Note, the telemetry logs generated with telemetry collector proxy and analyzed in the notebooks are note included.
----
 
 ## 1. `model_telemetry_collector_ver4.py`
 
