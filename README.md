@@ -35,3 +35,11 @@ A large Jupyter notebook covering the full EDA and ML pipeline for LLM abuse det
 Identical to `abuse_detection_eda_ml.ipynb` in every way except one: in Cell 13 (the feature set definition cell), `ACTIVE_FEATURE_SET` is set to `'time_only'` instead of `'telemetry_only'`. This means the ML classifiers in this branch are trained and evaluated using only timing-based features (`latency_s`, `tokens_out`, `tokens_in`) rather than GPU power telemetry, serving as a timing-only ablation baseline for comparison against the full telemetry model.
 
 ---
+
+## 6. `JailbreakingPM_LMSYS_public.ipynb`
+
+This notebook covers two independent data collection workflows that feed the jailbreak detection classifier. It should be run after the vLLM stack is confirmed healthy on both ports (8000 and 8001).
+
+**Part A** runs the 100 JailbreakBench (JBB) behaviors against a locally-hosted `Mistral-7B-Instruct-v0.3` instance and records per-request telemetry (latency, token counts) for baseline attack profiling.
+
+**Part B** samples 8,000 real-world benign prompts from the `lmsys/lmsys-chat-1m` dataset, runs them against the same vLLM endpoint, and saves labeled responses as the negative class (`abuse_label = 0`) for out-of-sample classifier testing.
